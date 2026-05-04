@@ -1,0 +1,263 @@
+:root {
+    --primary-blue: #0077b6;
+    --secondary-blue: #ade8f4;
+    --dark-blue: #023e8a;
+    --accent-orange: #f77f00;
+    --bg-light: #f8fbff;
+    --text-main: #333;
+    --white: #ffffff;
+}
+
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    line-height: 1.8;
+    color: var(--text-main);
+    background-color: var(--bg-light);
+    margin: 0;
+    padding: 0;
+}
+
+/* --- ヘッダー部分 (画像透過・黒文字設定) --- */
+.main-header {
+    height: 70vh;
+    min-height: 500px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000; /* 文字色：黒 */
+    overflow: hidden;
+    background-color: var(--secondary-blue);
+}
+
+/* 背景画像レイヤー（擬似要素で透過度を制御） */
+.main-header::before {
+    content: "";
+    background-image: url('header.webp'); /* 最新イラスト */
+    background-size: cover;
+    background-position: center 20%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.6; /* 画像自体の透過度 */
+}
+
+/* 黒文字を読みやすくするための明るいオーバーレイ */
+.header-overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(
+        to bottom, 
+        rgba(255, 255, 255, 0.2) 0%, 
+        rgba(255, 255, 255, 0.0) 50%, 
+        rgba(255, 255, 255, 0.4) 100%
+    );
+}
+
+.header-content {
+    text-align: center;
+    /* 黒文字の視認性を上げるための白い光彩 */
+    text-shadow: 0px 0px 15px rgba(255, 255, 255, 1), 0px 0px 5px rgba(255, 255, 255, 0.8);
+    padding: 0 1rem;
+}
+
+.header-content h1 {
+    margin: 0;
+    font-size: 2.2rem;
+    letter-spacing: 0.05em;
+    font-weight: 900;
+}
+
+.header-content p {
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+    font-weight: bold;
+}
+
+/* --- コンテナとセクション --- */
+.container {
+    max-width: 850px;
+    margin: -3rem auto 4rem;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 10;
+}
+
+section {
+    background: var(--white);
+    padding: 2.5rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+h2 {
+    color: var(--primary-blue);
+    border-left: 6px solid var(--primary-blue);
+    padding-left: 1rem;
+    margin-top: 0;
+    font-size: 1.6rem;
+}
+
+h3 {
+    color: var(--dark-blue);
+    border-bottom: 2px solid var(--secondary-blue);
+    padding-bottom: 0.3rem;
+    margin-top: 2rem;
+}
+
+/* --- 汎用カード (3.危険要因 や 6.トラブル対処 用) --- */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.card {
+    background: var(--bg-light);
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid var(--secondary-blue);
+}
+
+.card h4 {
+    margin-top: 0;
+    color: var(--primary-blue);
+}
+
+/* --- 機材セクション専用スタイル (4.機材 用) --- */
+.equipment-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.equipment-card {
+    background: var(--bg-light);
+    padding: 1.2rem;
+    border-radius: 8px;
+    border: 1px solid var(--secondary-blue);
+    display: flex; /* サムネイルとテキストを横並びに */
+    align-items: flex-start;
+    gap: 1.2rem;
+}
+
+.equipment-thumb {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 6px;
+    background-color: #eee;
+    flex-shrink: 0;
+}
+
+.equipment-body {
+    flex: 1;
+}
+
+.equipment-body h4 {
+    margin: 0 0 0.4rem 0;
+    color: var(--primary-blue);
+    font-size: 1.1rem;
+}
+
+.equipment-body p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* --- ボックス・リスト・ユーティリティ --- */
+.point-box {
+    background-color: #fff9f2;
+    border: 2px dashed var(--accent-orange);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+}
+
+.check-list {
+    background: #ffe5e5;
+    padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+    border-radius: 8px;
+    list-style: none;
+}
+
+.check-list li::before {
+    content: "☐";
+    margin-right: 10px;
+}
+
+.important-list {
+    background: #ffe5e5;
+    padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+    border-radius: 8px;
+    list-style: none;
+}
+
+.important-list li::before {
+    content: "⚠️";
+    margin-right: 10px;
+}
+
+.stop-list {
+    background: #ffe5e5;
+    padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+    border-radius: 8px;
+    list-style: none;
+}
+
+.stop-list li::before {
+    content: "❌️";
+    margin-right: 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+section > dl > dt {
+	font-weight:bold;
+}
+/* 6章などの画像ユニット用（必要に応じて） */
+.image-unit {
+    overflow: hidden;
+    margin: 1rem 0;
+}
+
+/* フッター */
+footer {
+    text-align: center;
+    padding: 3rem;
+    color: #777;
+}
+
+/* --- レスポンシブ対応 --- */
+@media (max-width: 600px) {
+    .main-header { height: 50vh; min-height: 400px; }
+    .header-content h1 { font-size: 1.5rem; }
+
+    /* 機材カードをスマホでは縦並びに */
+    .equipment-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .equipment-thumb {
+        width: 100%;
+        height: 150px;
+    }
+
+    section { padding: 1.5rem; }
+}
